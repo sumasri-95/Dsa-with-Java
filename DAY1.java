@@ -1,18 +1,15 @@
 import java.util.*;
 class DAY1{
     public static void main(String args[]){
-       Scanner sc = new Scanner(System.in);
-       int n= sc.nextInt();
-       for(int i=0;i<n;i++){
-        System.out.println("enter number:");
-            int a=sc.nextInt();
-            if((a&1)==0){
-            System.out.println("even");
-        } 
-        else{
-            System.out.println("odd");
+        Scanner sc = new Scanner(System.in);
+        int n= sc.nextInt();
+        String Binary = " ";
+        while(n>0){
+            int rem = n%2;
+            Binary = rem +Binary;
+            n = n/2;
+
         }
-       }
-       
+       System.out.println(Binary);
     }
 }

@@ -1,0 +1,401 @@
+1. What is Java?
+
+Java is a high-level, object-oriented, platform-independent programming language developed by James Gosling in 1995.
+
+Key Features
+Platform Independent ("Write Once, Run Anywhere")
+Object-Oriented
+Robust
+Secure
+Multithreaded
+Portable
+Distributed
+Dynamic
+Interview Question
+
+Q: Why is Java platform independent?
+
+Answer: Java code is compiled into bytecode, which runs on the JVM (Java Virtual Machine) available for different operating systems.
+
+2. Java Architecture
+Java Source Code (.java)
+        ↓
+Compiler (javac)
+        ↓
+Bytecode (.class)
+        ↓
+JVM
+        ↓
+Machine Code
+Components
+JDK (Java Development Kit)
+Used for development
+Contains JRE + Development Tools
+JRE (Java Runtime Environment)
+Provides runtime environment
+Contains JVM + Libraries
+JVM (Java Virtual Machine)
+Executes bytecode
+Interview Question
+
+Q: Difference between JDK, JRE, and JVM?
+
+JDK	JRE	JVM
+Development Kit	Runtime Environment	Executes Bytecode
+Contains JRE	Contains JVM	Part of JRE
+3. Object-Oriented Programming (OOP)
+
+This is the most important interview topic.
+
+Class
+
+Blueprint of objects.
+
+class Student {
+    int id;
+}
+Object
+
+Instance of a class.
+
+Student s = new Student();
+Interview Question
+
+Q: Difference between Class and Object?
+
+Class = Blueprint
+Object = Real instance occupying memory
+4. Four Pillars of OOP
+1. Encapsulation
+
+Wrapping data and methods together.
+
+class Employee {
+    private int salary;
+
+    public void setSalary(int salary){
+        this.salary = salary;
+    }
+}
+Benefits
+Data hiding
+Security
+2. Inheritance
+
+Acquiring properties of parent class.
+
+class Animal {
+    void eat(){}
+}
+
+class Dog extends Animal {
+}
+Types
+Single
+Multilevel
+Hierarchical
+
+(Java does not support multiple inheritance through classes.)
+
+Interview Question
+
+Q: Why doesn't Java support multiple inheritance?
+
+To avoid the Diamond Problem and ambiguity.
+
+3. Polymorphism
+
+One method, multiple forms.
+
+Compile-Time Polymorphism
+
+(Method Overloading)
+
+add(int a,int b)
+add(int a,int b,int c)
+Run-Time Polymorphism
+
+(Method Overriding)
+
+class Animal{
+    void sound(){}
+}
+
+class Dog extends Animal{
+    void sound(){}
+}
+Interview Question
+
+Q: Difference between Overloading and Overriding?
+
+Overloading	Overriding
+Same class	Parent-child
+Compile time	Runtime
+Different parameters	Same parameters
+4. Abstraction
+
+Hiding implementation details.
+
+Abstract Class
+abstract class Vehicle{
+    abstract void start();
+}
+Interface
+interface Vehicle{
+    void start();
+}
+Interview Question
+
+Q: Abstract class vs Interface?
+
+Abstract Class	Interface
+Can have constructors	No constructors
+Partial abstraction	Full abstraction (traditionally)
+extends keyword	implements keyword
+5. Constructor
+
+Special method used to initialize objects.
+
+class Student{
+    Student(){
+        System.out.println("Constructor");
+    }
+}
+Types
+Default Constructor
+Parameterized Constructor
+Interview Question
+
+Q: Can constructor be inherited?
+
+No.
+
+6. this and super
+this
+
+Refers to current object.
+
+this.id = id;
+super
+
+Refers to parent class object.
+
+super.display();
+Interview Question
+
+Q: Difference between this and super?
+
+this → current class
+super → parent class
+7. Static Keyword
+
+Belongs to class, not object.
+
+class Test{
+    static int count = 0;
+}
+Uses
+Static variable
+Static method
+Static block
+Interview Question
+
+Q: Can static method access non-static variables?
+
+No, because non-static members require an object.
+
+8. String Concepts
+String
+
+Immutable object.
+
+String s = "Hello";
+Interview Question
+
+Q: Why is String immutable?
+
+Security
+Thread safety
+String pool optimization
+String vs StringBuilder vs StringBuffer
+Feature	String	StringBuilder	StringBuffer
+Mutable	No	Yes	Yes
+Thread Safe	No	No	Yes
+Performance	Slow	Fast	Moderate
+9. Exception Handling
+
+Mechanism to handle runtime errors.
+
+try{
+}
+catch(Exception e){
+}
+finally{
+}
+Types
+Checked Exceptions
+
+Checked at compile time.
+
+Example:
+
+IOException
+SQLException
+Unchecked Exceptions
+
+Runtime exceptions.
+
+Example:
+
+NullPointerException
+ArithmeticException
+Interview Question
+
+Q: Difference between Checked and Unchecked Exceptions?
+
+Checked exceptions must be handled or declared; unchecked exceptions do not.
+
+10. Collection Framework
+
+Very important for MNC interviews.
+
+List
+
+Ordered and allows duplicates.
+
+ArrayList
+Dynamic array
+Fast retrieval
+LinkedList
+Fast insertion/deletion
+Set
+
+No duplicates.
+
+HashSet
+Unordered
+Uses hashing
+LinkedHashSet
+Maintains insertion order
+TreeSet
+Sorted order
+Map
+
+Stores key-value pairs.
+
+HashMap
+Unordered
+Allows one null key
+LinkedHashMap
+Maintains insertion order
+TreeMap
+Sorted by keys
+Interview Question
+
+Q: HashMap vs Hashtable?
+
+HashMap	Hashtable
+Not synchronized	Synchronized
+Faster	Slower
+Allows null key	No null key
+11. Multithreading
+
+Executing multiple threads simultaneously.
+
+class MyThread extends Thread{
+    public void run(){
+    }
+}
+Thread Lifecycle
+New
+Runnable
+Running
+Waiting
+Terminated
+Interview Question
+
+Q: Difference between start() and run()?
+
+start() creates a new thread
+run() executes in the current thread
+12. Memory Management
+Stack Memory
+Local variables
+Method calls
+Heap Memory
+Objects
+Instance variables
+Interview Question
+
+Q: Where are objects stored?
+
+Heap memory.
+
+13. Garbage Collection
+
+Automatically removes unused objects.
+
+System.gc();
+Interview Question
+
+Q: Can we force garbage collection?
+
+No. We can request it using System.gc(), but JVM decides.
+
+14. Access Modifiers
+Modifier	Same Class	Same Package	Subclass	Other Package
+private	Yes	No	No	No
+default	Yes	Yes	No	No
+protected	Yes	Yes	Yes	No*
+public	Yes	Yes	Yes	Yes
+15. Important Java 8 Features
+Lambda Expression
+(a,b) -> a+b
+Stream API
+list.stream()
+    .filter(x -> x > 10)
+    .collect(Collectors.toList());
+Functional Interface
+@FunctionalInterface
+interface Test{
+    void show();
+}
+Interview Question
+
+Q: What is a Functional Interface?
+
+An interface with exactly one abstract method.
+
+Top 20 Frequently Asked MNC Java Interview Questions
+Why is Java platform independent?
+Difference between JDK, JRE, JVM?
+What are OOP principles?
+Difference between abstraction and encapsulation?
+Why is String immutable?
+HashMap internally works how?
+HashMap vs ConcurrentHashMap?
+ArrayList vs LinkedList?
+Overloading vs Overriding?
+Abstract class vs Interface?
+Checked vs Unchecked Exception?
+final, finally, finalize difference?
+this vs super?
+Stack vs Heap?
+How does Garbage Collection work?
+What is Multithreading?
+start() vs run()?
+Synchronization in Java?
+What is a Functional Interface?
+Lambda Expression and Stream API?
+For Freshers Targeting MNCs
+
+Prioritize these topics in order:
+
+OOP Concepts
+Collections Framework
+Exception Handling
+String Concepts
+JVM/JDK/JRE
+Multithreading Basics
+Java 8 Features (Lambda & Streams)
+Memory Management & Garbage Collection

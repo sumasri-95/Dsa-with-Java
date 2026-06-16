@@ -1,0 +1,42 @@
+Most Repeated Coding Questions
+Arrays
+51. Find Largest Element
+52. Find Second Largest Element
+53. Find Missing Number
+54. Remove Duplicates
+55. Move Zeros to End
+
+Strings
+56. Reverse String
+57. Check Palindrome
+58. Check Anagram
+59. Count Vowels
+60. First Non-Repeating Character
+
+HashMap
+61. Two Sum
+Input:
+[2,7,11,15]
+Target=9
+
+Output:
+[0,1]
+62. Frequency Count of Characters
+63. Majority Element
+
+Linked List
+64. Reverse Linked List
+65. Detect Loop in Linked List
+66. Find Middle Element
+
+Stack
+67. Valid Parentheses
+{[()]}
+68. Implement Stack Using Queue
+69. Implement Queue Using Stack
+
+Trees
+70. Inorder Traversal
+71. Level Order Traversal
+72. Height of Tree
+73. Lowest Common Ancestor

@@ -102,7 +102,8 @@ class Day3{
         System.out.println();
      }*/
     
-        int n=sc.nextInt();
+        //hallow diamond
+       /* int n=sc.nextInt();
         // Upper half
         for (int i = 1; i <= n; i++) {
             for (int j = i; j < n; j++) {
@@ -137,7 +138,33 @@ class Day3{
             }
 
             System.out.println();
+        }*/
+
+       //rhombus
+       /*int n=sc.nextInt();
+       for(int i=1;i<=n;i++){
+        for(int j=1;j<=n-i;j++){
+            System.out.print(" ");
         }
+        for(int j=1;j<=n;j++){
+            if(i==1||i==n||j==1||j==n){
+                System.out.print("*");
+            }else{
+                System.out.print(" ");
+            }
+        }
+        System.out.println();
+       }*/
+        int num=sc.nextInt();
+    
+       for(int col=1;col<=num;col++){
+            for(int row=1;row<=num;row++){
+                System.out.print(row*row+" ");
+            
+            }
+            System.out.println();
+        }
+
     }
 }
 

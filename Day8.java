@@ -28,21 +28,23 @@ public class Day8{
         }
     }*/
 
-    public static void merge(int[] arr, int low, int high)
+    public static int merge(int[] arr, int low, int high)
     {
+        int ans=0;
         if(low < high)
         {
             int mid = (low + high) / 2;
-            merge(arr, low, mid);
-            merge(arr, mid + 1, high);
-            mergeSort(arr, low, mid, high);
+            ans+= merge(arr, low, mid);
+            ans+=merge(arr, mid + 1, high);
+            ans+=mergeSort(arr, low, mid, high);
         }
+        return ans;
     }
-    public static void mergeSort(int[] arr, int low , int mid, int high)
+    public static int mergeSort(int[] arr, int low , int mid, int high)
     {
         int size = high - low + 1;
         int[] dummy = new int[size];
-        int i = low, j = mid + 1, k = 0;
+        int i = low, j = mid + 1, k = 0,count=0;
         while(i <= mid && j <= high)
         {
             if(arr[i] <= arr[j])
@@ -51,6 +53,7 @@ public class Day8{
             }
             else
             {
+                count+=(mid-i+1);
                 dummy[k++] = arr[j++];
             }
         }
@@ -66,15 +69,15 @@ public class Day8{
         {
             arr[low + ind] = dummy[ind];
         }
+        return count;
     }
     public static void main(String[] args)
     {
-        int[] arr = {10, 7, 15, 3, 16, 8};
-        merge(arr, 0, arr.length - 1);
-        for(int i=0;i < arr.length;i++)
-        {
-            System.out.print(arr[i] + " ");
-        }
+        int[] arr = {1,2,3,4,5};
+        int sol=merge(arr, 0, arr.length - 1);
+        
+         System.out.print(sol+ " ");
+        
     }
 
 }

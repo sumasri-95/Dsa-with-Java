@@ -94,7 +94,7 @@
     }
 }*/
 //Dutch national flag method 
-public class Main{
+/*public class Main{
     private static void swap(int[] array,int first,int second){
         int safe=array[first];
         array[first]=array[second];
@@ -123,5 +123,34 @@ public class Main{
         for(int i=0;i<a.length;i++){
             System.out.print(a[i]+ " ");
         }
+    }
+}*/
+//min heap
+import java.util.*;
+public class Main{
+    private static int min_cost(int[] arr){
+        PriorityQueue<Integer> min_heap = new PriorityQueue<Integer>();
+        for(int val: arr) min_heap.add(val);
+        while(min_heap.size() > 1){
+            int fi=min_heap.poll();
+            int sc=min_heap.poll();
+            min_heap.add(fi+sc);
+        }
+
+        return min_heap.poll();
+    }
+    public static void main(String args[]){
+        /*PriorityQueue<Integer> min_heap = new PriorityQueue<Integer>();
+        min_heap.add(10);
+        min_heap.add(20);
+        min_heap.add(30);
+        min_heap.add(3);
+         min_heap.add(40);
+        min_heap.add(2);
+        System.out.println(min_heap.poll());
+        System.out.println(min_heap);*/
+        int[] arr={2,2,1,7,5,3};
+        System.out.print(min_cost(arr));
+
     }
 }

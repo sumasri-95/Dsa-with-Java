@@ -30,7 +30,7 @@ class Day12{
         }
 }*/
 
-class Node{
+/*class Node{
     int data;
     Node prev,next;
     public Node(int data){
@@ -113,4 +113,5 @@ class Day12{
         dq.pollLast();
         dq.display();
     }
-}
+}*/
+

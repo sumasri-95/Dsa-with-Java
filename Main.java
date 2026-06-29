@@ -126,7 +126,7 @@
     }
 }*/
 //min heap
-import java.util.*;
+/*import java.util.*;
 public class Main{
     private static int min_cost(int[] arr){
         PriorityQueue<Integer> min_heap = new PriorityQueue<Integer>();
@@ -148,9 +148,31 @@ public class Main{
          min_heap.add(40);
         min_heap.add(2);
         System.out.println(min_heap.poll());
-        System.out.println(min_heap);*/
+        System.out.println(min_heap);
         int[] arr={2,2,1,7,5,3};
         System.out.print(min_cost(arr));
+        }
+}*/
 
+//finding largest,smallest(-) element  in array with kth value 
+/*import java.util.*;
+class Main{
+    public static int kth_smallest(int[] arr,int k){
+        PriorityQueue<Integer> p = new PriorityQueue<>();
+        for(int val:arr){
+            p.add(-val);
+            if(p.size()>k) p.remove();
+        }
+        return p.remove();
     }
-}
+    public static void main(String args[]){
+       
+        int arr[]={10,30,7,18,32,19,13,12,17,100};
+        int k=3;
+        System.out.print(-(kth_smallest(arr,k)));
+        
+    }
+}*/
+
+
+

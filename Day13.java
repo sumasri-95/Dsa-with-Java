@@ -86,70 +86,161 @@ class Day13{
 }*/
 //Tree insertion and traversal in level order
 import java.util.*;
+
 class Node{
     int data;
-    Node left,right;
-    Node(int data){
-        this.data=data;
-        this.left= this.right=null;
+    Node left, right;
+    
+    public Node(int data){
+        this.data = data;
+        this.left = this.right = null;
     }
 }
+
 class Tree{
     Node root;
+    
     public Tree(){
-        this.root=null;
+        this.root = null;
     }
-    public void insert(int data){
+    
+    public void Insert(int data){
         if(this.root==null){
-            this.root=new Node(data);
-            return;
-        }else{
-            Queue<Node> q = new LinkedList<>();
-            q.offer(this.root);
-            while(!q.isEmpty()){
-                Node temp=q.poll();
-                if(temp.left==null){
-                    temp.left=new Node(data);
-                    return;
-                }else{
-                    q.offer(temp.left);
-                }
-                if(temp.right==null){
-                    temp.right=new Node(data);
-                    return;
-                }else{
-                    q.offer(temp.right);
+            this.root = new Node(data);
+            return ;
+        }
+        Queue<Node> Q = new LinkedList<>();
+        Q.offer(this.root);
+        while(!Q.isEmpty()){
+            Node current = Q.poll();
+            //left
+            if(current.left != null){
+                Q.offer(current.left);
+            }else{
+                current.left = new Node(data);
+                return ;
+            }
+            //right
+            if(current.right != null){
+                Q.offer(current.right);
+            }else{
+                current.right = new Node(data);
+                return ;
+            }
+        }
+   }
+   
+    public void Level_order(){
+        Queue<Node> Q = new LinkedList<>();
+        Q.offer(root);
+        while(!Q.isEmpty()){
+            Node current = Q.poll();
+            System.out.print(current.data+ " ");
+            if(current.left != null) Q.offer(current.left);
+            if(current.right != null) Q.offer(current.right);
+        }
+    }
+    
+    public void in_order(){
+        in_order_helper(this.root);
+    }
+    private void in_order_helper(Node node){
+        if(node != null){
+            in_order_helper(node.left);
+            System.out.print(node.data+ " ");
+            in_order_helper(node.right);
+        }
+    }
+    
+    public void pre_order(){
+        pre_order_helper(this.root);
+    }
+    
+    private void pre_order_helper(Node node){
+        if(node == null) return ;
+        System.out.print(node.data+" ");
+        pre_order_helper(node.left);
+        pre_order_helper(node.right);
+    }
+    
+    public void pre_order_using_stack(){
+        Stack<Node> st = new Stack<>();
+        st.push(this.root);
+        while(!st.isEmpty()){
+            Node current = st.pop();
+            if(current != null) {
+                System.out.print(current.data+" ");
+                st.push(current.right);
+                st.push(current.left);
+            }
+        }
+    }
+    
+    public void post_order(){
+        post_order_helper(this.root);
+    }
+    
+    private void post_order_helper(Node node){
+        if(node == null) return ;
+        post_order_helper(node.left);
+        post_order_helper(node.right);
+        System.out.print(node.data+" ");
+    }
+    
+    public void delete(int value){
+        if(root==null) return ;
+        if(root.left == null && root.right == null){
+            if(root.data == value){
+                this.root = null;
+                return ;
+            }
+            return ;
+        }
+        Queue<Node> Q = new LinkedList<>();
+        Q.offer(this.root);
+        Node current=null, target=null;
+        while(!Q.isEmpty()){
+            current = Q.poll();
+            if(current.data == value) target = current;
+            if(current.left != null) Q.offer(current.left);
+            if(current.right != null) Q.offer(current.right);
+        }
+        if(target != null){
+            target.data = current.data;
+            Q.offer(this.root);
+            while(!Q.isEmpty()){
+                Node present = Q.poll();
+                if(present.left!= null){
+                    if(present.left == current){
+                        present.left = null;
+                        return ;
+                    }else{
+                        Q.offer(present.left);
+                    }
+                }if(present.right != null){
+                    if(present.right == current){
+                        present.right = null;
+                        return;
+                    }else{
+                        Q.offer(present.right);
+                    }
                 }
             }
         }
     }
-    public void levelOrderTraversal(){
-        if(this.root==null){
-            return;
-        }
-        Queue<Node> q = new LinkedList<>();
-        q.offer(this.root);
-        while(!q.isEmpty()){
-            Node temp=q.poll();
-            System.out.print(temp.data+" ");
-            if(temp.left!=null){
-                q.offer(temp.left);
-            }
-            if(temp.right!=null){
-                q.offer(temp.right);
-            }
-        }
-    }   
 }
-class Day13{
-    public static void main(String args[]){
-        Tree t = new Tree();
-        t.insert(10);
-        t.insert(20);
-        t.insert(30);   
-        t.insert(40);
-        t.insert(50);   
-        t.insert(60);
-        t.levelOrderTraversal();
-    }
+public class Main{
+	public static void main(String[] args){
+	    Tree t =  new Tree();
+	    t.Insert(10);
+	    t.Insert(20);
+	    t.Insert(30);
+	    t.Insert(40);
+	    t.Insert(50);
+	    t.Insert(60);
+	    t.in_order();
+	    t.delete(70);
+	    System.out.println();
+	    t.in_order();
+	}
 }
